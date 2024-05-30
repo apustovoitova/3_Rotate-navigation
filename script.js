@@ -1,18 +1,25 @@
-const left = document.querySelector(".left");
-const right = document.querySelector(".right");
-const container = document.querySelector(".container");
+const sounds = ["applause", "boo", "gasp", "tada", "victory", "wrong"];
 
-left.addEventListener("mouseenter", () =>
-  container.classList.add("hover-left")
-);
+sounds.forEach((sound) => {
+  const btn = document.createElement("button");
+  btn.classList.add("btn");
 
-left.addEventListener("mouseleave", () =>
-  container.classList.remove("hover-left")
-);
+  btn.innerText = sound;
 
-right.addEventListener("mouseenter", () =>
-  container.classList.add("hover-right")
-);
-right.addEventListener("mouseleave", () =>
-  container.classList.remove("hover-right")
-);
+  btn.addEventListener("click", () => {
+    stopSongs();
+
+    document.getElementById(sound).play();
+  });
+
+  document.getElementById("buttons").appendChild(btn);
+});
+
+function stopSongs() {
+  sounds.forEach((sound) => {
+    const song = document.getElementById(sound);
+
+    song.pause();
+    song.currentTime = 0;
+  });
+}
