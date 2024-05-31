@@ -1,20 +1,21 @@
-const jokeEl = document.getElementById("joke");
-const jokeBtn = document.getElementById("jokeBtn");
+const boxes = document.querySelectorAll(".box");
 
-jokeBtn.addEventListener("click", generateJoke);
+window.addEventListener("scroll", checkBoxes);
 
-generateJoke();
+checkBoxes();
 
-async function generateJoke() {
-  const config = {
-    headers: {
-      Accept: "application/json",
-    },
-  };
+function checkBoxes() {
+  // console.log(window.innerHeight / 5 * 4);
 
-  const res = await fetch("https://icanhazdadjoke.com", config);
+  const triggerBottom = (window.innerHeight / 5) * 4;
 
-  const data = await res.json();
+  boxes.forEach((box) => {
+    const boxTop = box.getBoundingClientRect().top;
 
-  jokeEl.innerHTML = data.joke;
+    if (boxTop < triggerBottom) {
+      box.classList.add("show");
+    } else {
+      box.classList.remove("show");
+    }
+  });
 }

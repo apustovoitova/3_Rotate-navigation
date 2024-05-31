@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
 * {
     box-sizing: border-box;
@@ -10,8 +10,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100hv;
-    overflow-x: hidden;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    overflow: hidden;
     margin: 0;
     padding: 20px;
 }
